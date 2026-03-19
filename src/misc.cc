@@ -673,7 +673,7 @@ const char* getprogname() {
 // get path of executable.
 char* progpath() {
 #if defined(__linux__) && defined(_GNU_SOURCE) && !defined(__ANDROID__)
-    char* path = program_invocation_name;
+    char* path = program_invocation_name ? newstr(program_invocation_name) : nullptr;
     bool fail = (isEmpty(path) || !isExeFile(path));
     if (fail) {
         const size_t linksize = 123;
@@ -689,14 +689,19 @@ char* progpath() {
                 annotation[0] = 0;
             }
             if ((fail = access(link, R_OK | X_OK)) == 0) {
-                path = program_invocation_name = newstr(link);
-                INFO("1: set program_invocation_name %s", path);
+                delete[] path;
+                path = newstr(link);
+                INFO("1: resolved program path %s", path);
             }
         }
     }
-    if (fail && (path = path_lookup(path)) != nullptr) {
-        program_invocation_name = path;
-        INFO("2: set program_invocation_name %s", path);
+    if (fail) {
+        char* found = path_lookup(path);
+        if (found != nullptr) {
+            delete[] path;
+            path = found;
+            INFO("2: resolved program path %s", path);
+        }
     }
 #else
     static char* path;

@@ -49,6 +49,9 @@ mkdir -p m4 2>/dev/null
 
 autoreconf -fiv
 
+sed -i 's/^preferences: genpref$(EXEEXT)$/preferences:/' src/Makefile.in
+sed -i 's#^\t$(AM_V_GEN)\./genpref$(EXEEXT) -o $@ -s$#\t@test -f $@ || { echo "missing pre-generated $@"; exit 1; }#' src/Makefile.in
+
 # cscope target won't work without this
 #
 if [ -f po/Makefile.in.in ] ; then

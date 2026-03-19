@@ -1,7 +1,7 @@
 #ifndef YWORDEXP_H
 #define YWORDEXP_H
 
-#ifdef __OpenBSD__
+#if defined(__OpenBSD__) || !defined(HAVE_WORDEXP_H)
 #include <glob.h>
 
 inline int wordexp(const char *pattern, glob_t *pglob, int flags)
@@ -11,7 +11,7 @@ inline int wordexp(const char *pattern, glob_t *pglob, int flags)
 
 inline void wordfree(glob_t *pglob)
 {
-    return globfree(pglob);
+    globfree(pglob);
 }
 
 #define wordexp_t glob_t
