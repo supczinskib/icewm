@@ -29,6 +29,10 @@
 
 const iconv_t invalid = iconv_t(-1);
 
+static bool is_ascii_locale(const char* s) {
+    return s && (!strcmp(s, "C") || !strcmp(s, "POSIX"));
+}
+
 class YConverter {
 public:
     YConverter(const char* localeName);
@@ -69,6 +73,10 @@ YConverter::YConverter(const char* localeName) :
 }
 
 const char* YConverter::getCodeset() {
+    if (is_ascii_locale(fLocaleName)) {
+        return "UTF-8";
+    }
+
     const char* codeset = nullptr;
     int const codesetItems[] = {
 #ifdef CONFIG_NL_CODESETS
@@ -168,6 +176,10 @@ YLocale::YLocale(const char* localeName)
         codesetUTF8 = (0 == strncmp(converter->codesetName(), "UTF-8", 5));
 #endif
         bindtextdomain(PACKAGE, LOCDIR);
+#ifdef CONFIG_I18N
+        if (converter && is_ascii_locale(converter->localeName()))
+            bind_textdomain_codeset(PACKAGE, "UTF-8");
+#endif
         textdomain(PACKAGE);
         getDirection();
     }
