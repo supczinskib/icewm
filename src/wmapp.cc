@@ -547,16 +547,14 @@ void LogoutMenu::updatePopup() {
         setShared(true); /// !!! get rid of this (refcount objects)
         if (showLogoutSubMenu) {
             addItem(_("_Logout"), -2, null, actionLogout, "logout");
-            addItem(_("_Cancel logout"), -2, null, actionCancelLogout,
-                    "cancel-logout")->setEnabled(false);
             addSeparator();
 
             int const oldItemCount = itemCount();
             if (canLock())
                 addItem(_("Lock _Workstation"), -2, null, actionLock, "lock");
-            if (canShutdown(Reboot))
+            if (rebootCommand && rebootCommand[0])
                 addItem(_("Re_boot"), -2, null, actionReboot, "reboot");
-            if (canShutdown(Shutdown))
+            if (shutdownCommand && shutdownCommand[0])
                 addItem(_("Shut_down"), -2, null, actionShutdown, "shutdown");
             if (canSuspend())
                 addItem(_("_Sleep mode"), -2, null, actionSuspend, "suspend");
@@ -566,9 +564,6 @@ void LogoutMenu::updatePopup() {
                 addSeparator();
 
             addItem(_("Restart _Icewm"), -2, null, actionRestart, "restart");
-
-            addItem(_("Restart _Xterm"), -2, null, actionRestartXterm, "xterm");
-
         }
     }
 }
@@ -2040,8 +2035,24 @@ void YWMApp::logout() {
         logoutMenu->disableCommand(actionLogout);
         logoutMenu->enableCommand(actionCancelLogout);
     }
-    if (logoutCommand && logoutCommand[0]) {
-        runCommand(logoutCommand);
+
+    const char *cmd = nullptr;
+
+    switch (rebootOrShutdown) {
+    case Shutdown:
+        cmd = shutdownCommand;
+        break;
+    case Reboot:
+        cmd = rebootCommand;
+        break;
+    case Logout:
+    default:
+        cmd = logoutCommand;
+        break;
+    }
+
+    if (cmd && cmd[0]) {
+        runCommand(cmd);
 #ifdef CONFIG_SESSION
     } else if (haveSessionManager()) {
         smRequestShutdown();
