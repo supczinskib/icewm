@@ -2705,6 +2705,9 @@ msgid "_Preferences"
 msgstr "優先設定(_P)"
 
 #: src/wmprog.cc:402
+msgid "_Regional"
+msgstr "_區域"
+
 msgid "_Themes"
 msgstr "主題(_T)"
 

@@ -2724,6 +2724,9 @@ msgid "_Preferences"
 msgstr "_Præferencer"
 
 #: src/wmprog.cc:402
+msgid "_Regional"
+msgstr "_Regional"
+
 msgid "_Themes"
 msgstr "_Temaer"
 

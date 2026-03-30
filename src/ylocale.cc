@@ -244,13 +244,6 @@ wchar_t* YLocale::unicodeString(const char* lStr, size_t const lLen,
     errno = 0;
     size_t count = iconv(instance->converter->unicode(),
                          &inbuf, &inlen, &outbuf, &outlen);
-    if (count == size_t(-1)) {
-        static unsigned count, shift;
-        if (++count >= (1U << shift)) {
-            ++shift;
-            warn(_("Invalid multibyte string \"%s\": %s"), lStr, strerror(errno));
-        }
-    }
 
     *(reinterpret_cast<wchar_t *>(outbuf)) = 0;
     uLen = reinterpret_cast<wchar_t *>(outbuf) - uStr;

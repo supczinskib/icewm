@@ -2701,6 +2701,9 @@ msgid "_Preferences"
 msgstr "配置选项(_P)"
 
 #: src/wmprog.cc:402
+msgid "_Regional"
+msgstr "_区域"
+
 msgid "_Themes"
 msgstr "主题(_T)"
 

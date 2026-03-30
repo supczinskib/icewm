@@ -165,6 +165,17 @@ public:
     HelpMenu();
 };
 
+class SettingsMenu: public YMenu, public YActionListener {
+public:
+    SettingsMenu(IApp *app, YSMListener *smActionListener);
+    virtual void actionPerformed(YAction action, unsigned modifiers);
+
+private:
+    IApp *app;
+    YSMListener *smActionListener;
+    YAction regionalAction;
+};
+
 class StartMenu: public MenuFileMenu {
 public:
     StartMenu(

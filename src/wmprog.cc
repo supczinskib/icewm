@@ -346,6 +346,45 @@ HelpMenu::HelpMenu() {
     addItem("icewm-winoptions", -2, null, actionHelpWinoptions, "help");
 }
 
+SettingsMenu::SettingsMenu(IApp *app, YSMListener *smActionListener)
+    : app(app)
+    , smActionListener(smActionListener)
+{
+    if (!showTaskBar && showAbout) {
+        addItem(_("_About"), -2, actionAbout, nullptr, "about");
+    }
+
+    if (showHelp) {
+        HelpMenu* help = new HelpMenu();
+        addSubmenu(_("_Help"), -2, help, "help");
+    }
+
+    if (showFocusModeMenu) {
+        FocusMenu *focus = new FocusMenu();
+        addSubmenu(_("_Focus"), -2, focus, "focus");
+    }
+
+    if (showSettingsMenu) {
+        PrefsMenu *prefs = new PrefsMenu();
+        addSubmenu(_("_Preferences"), -2, prefs, "pref");
+    }
+
+    if (showThemesMenu) {
+        YMenu* themes = new ThemesMenu(app, smActionListener);
+        addSubmenu(_("_Themes"), -2, themes, "themes");
+    }
+
+    addItem(_("_Regional"), -2, null, regionalAction, "pref");
+    setActionListener(this);
+}
+
+void SettingsMenu::actionPerformed(YAction action, unsigned /*modifiers*/) {
+    if (action == regionalAction) {
+        app->runCommand("sh -c 'exec xterm -e regionset >/dev/null 2>&1'");
+        return;
+    }
+}
+
 void StartMenu::refresh() {
     MenuFileMenu::refresh();
 
@@ -376,31 +415,7 @@ void StartMenu::refresh() {
         addItem(_("_Windows"), -2, actionWindowList, windowListMenu, "windows");
     }
 
-    YMenu* settings = new YMenu();
-
-    if (!showTaskBar && showAbout) {
-        settings->addItem(_("_About"), -2, actionAbout, nullptr, "about");
-    }
-
-    if (showHelp) {
-        HelpMenu* help = new HelpMenu();
-        settings->addSubmenu(_("_Help"), -2, help, "help");
-    }
-
-    if (showFocusModeMenu) {
-        FocusMenu *focus = new FocusMenu();
-        settings->addSubmenu(_("_Focus"), -2, focus, "focus");
-    }
-
-    if (showSettingsMenu) {
-        PrefsMenu *prefs = new PrefsMenu();
-        settings->addSubmenu(_("_Preferences"), -2, prefs, "pref");
-    }
-
-    if (showThemesMenu) {
-        YMenu* themes = new ThemesMenu(app, smActionListener);
-        settings->addSubmenu(_("_Themes"), -2, themes, "themes");
-    }
+    SettingsMenu* settings = new SettingsMenu(app, smActionListener);
 
     if (settings->itemCount()) {
         addSubmenu(_("Se_ttings"), -2, settings, "settings");

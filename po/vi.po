@@ -2592,6 +2592,9 @@ msgid "_Preferences"
 msgstr ""
 
 #: src/wmprog.cc:402
+msgid "_Regional"
+msgstr "_Vùng miền"
+
 msgid "_Themes"
 msgstr "_Sắc thái"
 

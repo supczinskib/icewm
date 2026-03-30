@@ -2454,6 +2454,9 @@ msgid "_Preferences"
 msgstr "Ба_птаулар"
 
 #: src/wmprog.cc:402
+msgid "_Regional"
+msgstr "_Аймақтық"
+
 msgid "_Themes"
 msgstr ""
 

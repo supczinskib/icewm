@@ -2736,6 +2736,9 @@ msgid "_Preferences"
 msgstr "_Tercihler"
 
 #: src/wmprog.cc:402
+msgid "_Regional"
+msgstr "_Bölgesel"
+
 msgid "_Themes"
 msgstr "_Temalar"
 

@@ -2908,6 +2908,9 @@ msgstr "_Beállítások"
 
 # ../src/wmprog.cc:627
 #: src/wmprog.cc:402
+msgid "_Regional"
+msgstr "_Regionális"
+
 msgid "_Themes"
 msgstr "_Témák"
 
