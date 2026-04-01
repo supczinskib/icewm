@@ -2724,6 +2724,9 @@ msgstr "_Preferencie"
 msgid "_Regional"
 msgstr "_Regionálne"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Témy"
 

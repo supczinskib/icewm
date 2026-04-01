@@ -2549,6 +2549,9 @@ msgstr "_Nuostatos"
 msgid "_Regional"
 msgstr "_Regioniniai"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Apipavidalinimai"
 

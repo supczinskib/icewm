@@ -2780,6 +2780,9 @@ msgstr "_Préférences"
 msgid "_Regional"
 msgstr "_Régional"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Thèmes"
 

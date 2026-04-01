@@ -2445,6 +2445,9 @@ msgstr ""
 msgid "_Regional"
 msgstr ""
 
+msgid "_Wifi"
+msgstr ""
+
 msgid "_Themes"
 msgstr ""
 

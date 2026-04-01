@@ -2687,6 +2687,9 @@ msgstr "_기본 설정"
 msgid "_Regional"
 msgstr "_지역"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "모양새(_T)"
 

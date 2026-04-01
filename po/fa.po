@@ -2463,6 +2463,9 @@ msgstr ""
 msgid "_Regional"
 msgstr "_منطقه‌ای"
 
+msgid "_Wifi"
+msgstr "_وای‌فای"
+
 msgid "_Themes"
 msgstr ""
 

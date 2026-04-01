@@ -2759,6 +2759,9 @@ msgstr "_Προτιμήσεις"
 msgid "_Regional"
 msgstr "_Περιφερειακά"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Θέματα"
 

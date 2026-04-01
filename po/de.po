@@ -2758,6 +2758,9 @@ msgstr "_Wünsche"
 msgid "_Regional"
 msgstr "_Regional"
 
+msgid "_Wifi"
+msgstr "_WLAN"
+
 msgid "_Themes"
 msgstr "_Themes"
 

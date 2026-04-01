@@ -2715,6 +2715,9 @@ msgstr "_Inställningar"
 msgid "_Regional"
 msgstr "_Regional"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Teman"
 

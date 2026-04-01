@@ -2688,6 +2688,9 @@ msgstr "_التفضيلات"
 msgid "_Regional"
 msgstr "_إقليمي"
 
+msgid "_Wifi"
+msgstr "_واي فاي"
+
 msgid "_Themes"
 msgstr "سمات"
 

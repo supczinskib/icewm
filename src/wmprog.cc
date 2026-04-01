@@ -350,6 +350,9 @@ SettingsMenu::SettingsMenu(IApp *app, YSMListener *smActionListener)
     : app(app)
     , smActionListener(smActionListener)
 {
+    addItem(_("_Wifi"), -2, null, wifiAction, "pref");
+    addItem(_("_Regional"), -2, null, regionalAction, "pref");
+
     if (!showTaskBar && showAbout) {
         addItem(_("_About"), -2, actionAbout, nullptr, "about");
     }
@@ -373,14 +376,16 @@ SettingsMenu::SettingsMenu(IApp *app, YSMListener *smActionListener)
         YMenu* themes = new ThemesMenu(app, smActionListener);
         addSubmenu(_("_Themes"), -2, themes, "themes");
     }
-
-    addItem(_("_Regional"), -2, null, regionalAction, "pref");
     setActionListener(this);
 }
 
 void SettingsMenu::actionPerformed(YAction action, unsigned /*modifiers*/) {
     if (action == regionalAction) {
-        app->runCommand("sh -c 'exec xterm -e regionset >/dev/null 2>&1'");
+        app->runCommand("sh -c 'exec xterm -T \"Regional Settings\" -e regionset >/dev/null 2>&1'");
+        return;
+    }
+    if (action == wifiAction) {
+        app->runCommand("sh -c 'exec xterm -T \"Wi-Fi Settings\" -e wifiset >/dev/null 2>&1'");
         return;
     }
 }

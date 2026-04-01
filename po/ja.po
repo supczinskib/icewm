@@ -2747,6 +2747,9 @@ msgstr "設定 (_P)"
 msgid "_Regional"
 msgstr "地域_設定"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "テーマ (_T)"
 

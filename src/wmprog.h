@@ -174,6 +174,7 @@ private:
     IApp *app;
     YSMListener *smActionListener;
     YAction regionalAction;
+    YAction wifiAction;
 };
 
 class StartMenu: public MenuFileMenu {

@@ -2457,6 +2457,9 @@ msgstr "Ба_птаулар"
 msgid "_Regional"
 msgstr "_Аймақтық"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr ""
 

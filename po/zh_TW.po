@@ -2708,6 +2708,9 @@ msgstr "優先設定(_P)"
 msgid "_Regional"
 msgstr "_區域"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "主題(_T)"
 

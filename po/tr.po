@@ -2739,6 +2739,9 @@ msgstr "_Tercihler"
 msgid "_Regional"
 msgstr "_Bölgesel"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Temalar"
 

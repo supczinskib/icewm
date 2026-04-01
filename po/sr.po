@@ -2642,6 +2642,9 @@ msgstr "_Својства"
 msgid "_Regional"
 msgstr "_Регионално"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Предмети"
 

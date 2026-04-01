@@ -2718,6 +2718,9 @@ msgstr "_Preferencje"
 msgid "_Regional"
 msgstr "_Regionalne"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "Mo_tywy"
 

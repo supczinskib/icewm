@@ -2480,6 +2480,9 @@ msgstr ""
 msgid "_Regional"
 msgstr "_क्षेत्रीय"
 
+msgid "_Wifi"
+msgstr "_वाई-फाई"
+
 msgid "_Themes"
 msgstr ""
 

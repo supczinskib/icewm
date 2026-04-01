@@ -2911,6 +2911,9 @@ msgstr "_Beállítások"
 msgid "_Regional"
 msgstr "_Regionális"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Témák"
 

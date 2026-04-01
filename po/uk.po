@@ -2700,6 +2700,9 @@ msgstr "_Налаштування"
 msgid "_Regional"
 msgstr "_Регіональні"
 
+msgid "_Wifi"
+msgstr "_Wi-Fi"
+
 msgid "_Themes"
 msgstr "_Теми"
 
