@@ -15,6 +15,31 @@
 
 extern YColorName activeBorderBg;
 
+
+static void updateLatestMotion(XMotionEvent& motion) {
+    XEvent next;
+    while (XCheckTypedWindowEvent(xapp->display(), motion.window, MotionNotify, &next)) {
+        motion = next.xmotion;
+    }
+    if (moveSizeMotionCoalesce) {
+        Window root, child;
+        int rootX, rootY, winX, winY;
+        unsigned mask;
+        if (XQueryPointer(xapp->display(), motion.window,
+                          &root, &child,
+                          &rootX, &rootY,
+                          &winX, &winY,
+                          &mask))
+        {
+            motion.x_root = rootX;
+            motion.y_root = rootY;
+            motion.x = winX;
+            motion.y = winY;
+            motion.state = mask;
+        }
+    }
+}
+
 void YFrameWindow::snapTo(int &wx, int &wy,
                           int rx1, int ry1, int rx2, int ry2,
                           int &flags)
@@ -923,7 +948,9 @@ void YFrameWindow::startMoveSize(bool doMove, bool byMouse,
                           grabPointer,
                           ButtonPressMask |
                           ButtonReleaseMask |
-                          PointerMotionMask))
+                          (moveSizeMotionCoalesce
+                              ? (ButtonMotionMask | PointerMotionHintMask)
+                              : PointerMotionMask)))
     {
         movingWindow = false;
         sizingWindow = false;
@@ -1062,11 +1089,16 @@ void YFrameWindow::handleButton(const XButtonEvent &button) {
 }
 
 void YFrameWindow::handleMotion(const XMotionEvent &motion) {
+    XMotionEvent latest(motion);
+
+    if (hasMoveSize() && moveSizeMotionCoalesce)
+        updateLatestMotion(latest);
+
     if (sizingWindow) {
         int newX = x(), newY = y();
         int newWidth = width(), newHeight = height();
 
-        handleResizeMouse(motion, newX, newY, newWidth, newHeight);
+        handleResizeMouse(latest, newX, newY, newWidth, newHeight);
         YRect rect(newX, newY, newWidth, newHeight);
         if (rect != geometry()) {
             drawMoveSizeFX(x(), y(), width(), height());
@@ -1079,11 +1111,11 @@ void YFrameWindow::handleMotion(const XMotionEvent &motion) {
         int newX = x();
         int newY = y();
 
-        handleMoveMouse(motion, newX, newY);
+        handleMoveMouse(latest, newX, newY);
         moveWindow(newX, newY);
     }
     else {
-        YWindow::handleMotion(motion);
+        YWindow::handleMotion(latest);
     }
 }
 

@@ -31,6 +31,7 @@ XIV(bool, warpPointer,                          false)
 XIV(bool, warpPointerOnEdgeSwitch,              false)
 XIV(bool, opaqueMove,                           true)
 XIV(bool, opaqueResize,                         true)
+XIV(bool, moveSizeMotionCoalesce,              false)
 XIV(bool, hideTitleBarWhenMaximized,            false)
 XSV(const char *, winMenuItems,                 "rmsnxfhualytiecw")
 XIV(bool, showTaskBar,                          true)
@@ -282,6 +283,7 @@ cfoption icewm_preferences[] = {
     OBV("StrongPointerFocus",                   &strongPointerFocus,            "Always maintain focus under mouse window (makes some keyboard support non-functional or unreliable)"),
     OBV("OpaqueMove",                           &opaqueMove,                    "Opaque window move"),
     OBV("OpaqueResize",                         &opaqueResize,                  "Opaque window resize"),
+    OBV("MoveSizeMotionCoalesce",              &moveSizeMotionCoalesce,       "Use latest pointer state during window move/resize"),
     OBV("ManualPlacement",                      &manualPlacement,               "Windows initially placed manually by user"),
     OBV("SmartPlacement",                       &smartPlacement,                "Smart window placement with minimal overlap"),
     OBV("HideTitleBarWhenMaximized",            &hideTitleBarWhenMaximized,     "Hide title bar when maximized"),

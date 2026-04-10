@@ -110,6 +110,9 @@ ShowMoveSizeStatus=0
 #  Opaque window resize
 # OpaqueResize=1 # 0/1
 
+# Reduce queued pointer motion during opaque move/resize
+MoveSizeMotionCoalesce=1
+
 #  Windows initially placed manually by user
 # ManualPlacement=0 # 0/1
 
@@ -573,7 +576,7 @@ LockCommand="xscreensaver-command -lock || xlock -mousemotion"
 TerminalCommand=""
 
 #  Command to start logout
-# LogoutCommand=""
+LogoutCommand="/etc/init.d/S95xwait restart-wait"
 
 #  Command to cancel logout
 #LogoutCancelCommand=""
