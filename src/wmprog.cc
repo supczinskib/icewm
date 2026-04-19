@@ -381,11 +381,11 @@ SettingsMenu::SettingsMenu(IApp *app, YSMListener *smActionListener)
 
 void SettingsMenu::actionPerformed(YAction action, unsigned /*modifiers*/) {
     if (action == regionalAction) {
-        app->runCommand("sh -c 'exec xterm -T \"Regional Settings\" -e regionset >/dev/null 2>&1'");
+        app->runCommand("sh -c 'exec xterm -T \"Regional Settings\" -name regionset -e regionset >/dev/null 2>&1'");
         return;
     }
     if (action == wifiAction) {
-        app->runCommand("sh -c 'exec xterm -T \"Wi-Fi Settings\" -e wifiset >/dev/null 2>&1'");
+        app->runCommand("sh -c 'exec xterm -T \"Wi-Fi Settings\" -name wifiset -e wifiset >/dev/null 2>&1'");
         return;
     }
 }
