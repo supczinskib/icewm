@@ -3184,9 +3184,18 @@ void YFrameWindow::updateState() {
             fAutoRaiseTimer->disableTimerListener(this);
     }
     else {
-        client()->show();
-        container()->show();
+        /*
+         * On framebuffer/Xfbdev-like setups the old order could briefly expose
+         * uninitialised client pixels while the frame/container became visible.
+         * Map and clear only the IceWM-owned parent/container first, then map
+         * the real client window. Do not clear the client itself: some clients
+         * repaint asynchronously and clearing them here can leave black content.
+         */
         show();
+        container()->show();
+        container()->clearWindow();
+        xapp->sync();
+        client()->show();
     }
 }
 
